@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#gene").keyup(function(){
+
+                    var package = {
+                        "username": "jeff@ebi.ac.uk",
+                        "password": "jeff@ebi.ac.uk"
+                    }
+                   $.ajax({
+                       url: "http://ega-vault.ebi.ac.uk/ega_admin/test-login/user/login",
+                       type: "POST",
+                       dataType:"json",
+                       data: JSON.stringify(package) ,
+                       headers: {
+                           'Content-Type': 'application/json'
+                       },
+                       success: function(response){
+                           console.log(response)
+                       },
+                       error: function (response) {
+
+                       }
+                   });
+
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="ui-widget" style="margin: 0 auto;text-align: left;width: 800px;">
+    <label for="gene">Gene Search: </label>
+    <input id="gene" placeholder="Enter search">
+</div>
+</body>
+</html>
