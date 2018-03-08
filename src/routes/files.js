@@ -21,6 +21,7 @@ var   mysql    = require('mysql'),
          _     = require('underscore'),
       router = express.Router();
 
+
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader(process.argv[2]);
 
@@ -100,6 +101,13 @@ router.get('/get_process_log/:id', function (req, res, next) {
         }
     });
 
+});
+
+router.get('/get_pipeline_log/:id', function (req, res, next) {
+    var exec = require('child_process').exec;
+    exec("/Users/kandaj/get_pipeline_log.sh "+req.params.id, function(err, stdout, stderr) {
+       res.status(200).send(JSON.stringify(stdout));
+    });
 });
 
 router.get('/get_count', function (req, res, next) {
