@@ -21,6 +21,7 @@ var http     = require('http'),
     express  = require('express'),
     parser   = require('body-parser'),
     files    = require('./routes/files');
+    postgres = require('./routes/postgresFiles');
 
 // Setup express
 var app = express();
@@ -34,6 +35,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/files', files);
+app.use('/postgres', postgres);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

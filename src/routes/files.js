@@ -20,7 +20,7 @@ var   mysql    = require('mysql'),
       express  = require('express'),
          _     = require('underscore'),
       router = express.Router();
-
+var pipelineLogScript = '/Users/kandaj/get_pipeline_log.sh';
 
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader(process.argv[2]);
@@ -105,7 +105,7 @@ router.get('/get_process_log/:id', function (req, res, next) {
 
 router.get('/get_pipeline_log/:id', function (req, res, next) {
     var exec = require('child_process').exec;
-    exec("/Users/kandaj/get_pipeline_log.sh "+req.params.id, function(err, stdout, stderr) {
+    exec(pipelineLogScript+" "+req.params.id, function(err, stdout, stderr) {
        res.status(200).send(JSON.stringify(stdout));
     });
 });
@@ -120,7 +120,6 @@ router.get('/get_count', function (req, res, next) {
                 if (!err){
                     var response = [];
                     if (!_.isEmpty(rows)) {
-                        console.log(rows)
                         var results = []
                         for (var i = 0; i < rows.length; i++) {
                             var row = rows[i];
