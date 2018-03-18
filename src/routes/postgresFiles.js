@@ -29,5 +29,17 @@ var db = require('../db/postgres_audit');
 
 router.get('/get_count',db.getFileCount);
 
+router.get('/get_process_log/:id',db.getProcessLog);
+
+router.get('/get_pipeline_log/:id',db.getPipelineLog);
+
+router.get('/get_details/:id',db.getFileDetails);
+
+router.get('/get_status/:id',db.getStatusFiles);
+
+router.post('/update_status/',db.updateStatus);
+
+
+
 
 module.exports = router;
