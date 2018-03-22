@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/files', files);
-app.use('/postgres', postgres);
+app.use('/api/v1/files', postgres);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
