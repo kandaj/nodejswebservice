@@ -22,6 +22,8 @@ var http     = require('http'),
     parser   = require('body-parser'),
     files    = require('./routes/files');
     postgres = require('./routes/postgresFiles');
+var path = require("path");
+var public = __dirname + "/../public/";
 
 // Setup express
 var app = express();
@@ -33,6 +35,13 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(public + "index.html"));
+});
+
+app.use('/', express.static(public));
+
 
 app.use('/files', files);
 app.use('/api/v1/files', postgres);

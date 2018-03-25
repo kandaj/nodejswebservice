@@ -41,9 +41,7 @@ router.post('/update_status/',updateStatus);
 
 
 function getFileCount(req, res, next) {
-    db.any('select count(*) as total, archive_status_id from audit_file where ' +
-        'archive_status_id=8 or archive_status_id=10 or archive_status_id=14 or archive_status_id=22 or archive_status_id=23 or archive_status_id=25 ' +
-        'group by archive_status_id')
+    db.any('select count(*) as total, archive_status_id from audit_file where archive_status_id in (3,4,6,7,9,10,13,14,15,16,17,22,25,34,35,50,52) group by archive_status_id')
         .then(function (data) {
             res.status(200)
                 .json({
