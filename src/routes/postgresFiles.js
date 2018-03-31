@@ -27,17 +27,17 @@ var db = require('../db/postgres_audit');
 
 
 
-router.get('/get_count',getFileCount);
+router.get('/audit/get_count',getFileCount);
 
-router.get('/get_process_log/:id',getProcessLog);
+router.get('/audit/get_process_log/:id',getProcessLog);
 
-router.get('/get_pipeline_log/:id',getPipelineLog);
+router.get('/audit/get_pipeline_log/:id',getPipelineLog);
 
-router.get('/get_details/:id',getFileDetails);
+router.get('/audit/get_file_details/:id',getFileDetails);
 
-router.get('/get_status/:id',getStatusFiles);
+router.get('/audit/get_files/:id',getStatusFiles);
 
-router.post('/update_status/',updateStatus);
+router.post('/audit/update_status',updateStatus);
 
 
 function getFileCount(req, res, next) {

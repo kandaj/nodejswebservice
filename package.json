@@ -9,7 +9,9 @@
     "forever": "0.15.3",
     "mysql": "^2.5.4",
     "pg-promise": "^8.2.2",
+    "pm2": "^2.10.1",
     "properties-reader": "0.0.16",
+    "swagger-ui-express": "^3.0.6",
     "underscore": "1.8.3"
   },
   "devDependencies": {

@@ -1,0 +1,126 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "EGA Internal API",
+    "description": "EGA Internal REST API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/audit/get_count": {
+      "get": {
+        "tags": [
+          "StatusCount"
+        ],
+        "summary": "Get count of files per status",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/audit/get_process_log/{fileStableID}": {
+      "parameters": [
+        {
+          "name": "StableID",
+          "in": "path",
+          "required": true,
+          "description": "File stable ID we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "summary": "Get Process Log for stable ID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/audit/get_pipeline_log/{fileStableID}": {
+      "parameters": [
+        {
+          "name": "StableID",
+          "in": "path",
+          "required": true,
+          "description": "File stable ID we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "summary": "Get Pipeline Log for stable ID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/audit/get_files/{statusID}": {
+      "parameters": [
+        {
+          "name": "statusID",
+          "in": "path",
+          "required": true,
+          "description": "Archive Status ID",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Get Files"
+        ],
+        "summary": "Get all files for a status",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/audit/get_file_details/{statusID}": {
+      "parameters": [
+        {
+          "name": "StableID",
+          "in": "path",
+          "required": true,
+          "description": "File stable ID we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Get Files"
+        ],
+        "summary": "Get detailed information for a file",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

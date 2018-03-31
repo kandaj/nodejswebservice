@@ -24,6 +24,8 @@ var http     = require('http'),
     postgres = require('./routes/postgresFiles');
 var path = require("path");
 var public = __dirname + "/../public/";
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger/swagger.json');
 
 // Setup express
 var app = express();
@@ -42,9 +44,10 @@ app.get('/', function(req, res) {
 
 app.use('/', express.static(public));
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/files', files);
-app.use('/api/v1/files', postgres);
+app.use('/api/v1', postgres);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
